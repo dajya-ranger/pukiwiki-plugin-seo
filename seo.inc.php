@@ -12,15 +12,21 @@
  * @example		&seo(keywords){keyword,[keyword2],･･･[keyword-n]};
  * @example		&seo(tag){tag,[tag2],･･･[tag-n]};
  * @license		Apache License 2.0
- * @version		0.1.0
+ * @version		0.1.1
+ * @since 		0.1.1 2019/11/04 Facebook及びTwitterのOGPタグ出力対応
  * @since 		0.1.0 2019/11/04 暫定初公開
  *
  */
 
-// タグページ名（階層構造のトップページ名）
-define('PLUGIN_SEO_TAG_PAGE', '');		// No tag page will be created
-//define('PLUGIN_SEO_TAG_PAGE', 'Tag');	// Create tag page with root page name 'Tag'
+// Facebook OGPタグ出力設定
+define('PLUGIN_SEO_FACEBOOK_OGP', 1);	// 1:有効 0:無効
 
+// Twitter OGPタグ出力設定
+define('PLUGIN_SEO_TWITTER_OGP', 1);	// 1:有効 0:無効
+
+// タグページ名（階層構造のトップページ名）
+define('PLUGIN_SEO_TAG_PAGE', '');		// タグページを出力しない（初期値）
+//define('PLUGIN_SEO_TAG_PAGE', 'Tag');	// 「Tag」ページ名で階層構造でタグページを出力する
 
 function plugin_seo_create_tag_page($tags) {
 										// タグページの存在確認
@@ -58,6 +64,16 @@ function plugin_seo_inline() {
 		if ( isset($content) && ($content != '') ) {
 			// ページヘッダにページの概要タグ出力
 			$head_tags[] = '<meta name="' . $name . '" content="' . $content . '" />';
+										// Facebook OGPタグ出力
+			if ( (PLUGIN_SEO_FACEBOOK_OGP != 0) && ($name == 'description') ) {
+				// Facebook OGPタグ出力設定でページ概要の場合はタグを出力
+				$head_tags[] = '<meta property="og:' . $name . '" content="' . $content . '" />';
+			}
+										// Twitter OGPタグ出力
+			if ( (PLUGIN_SEO_TWITTER_OGP != 0) && ($name == 'description') ) {
+				// Twitter OGPタグ出力設定でページ概要の場合はタグを出力
+				$head_tags[] = '<meta property="twitter:' . $name . '" content="' . $content . '" />';
+			}
 			return '';
 		} else {
 			// エラーメッセージセット
