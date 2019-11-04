@@ -32,7 +32,8 @@ function plugin_seo_create_tag_page($tags) {
 										// タグページの存在確認
 	if (! is_page(PLUGIN_SEO_TAG_PAGE) ) {
 		// ページが存在しない場合はページを作成する
-		page_write(PLUGIN_SEO_TAG_PAGE, '#related');
+		$postdata = '[[' . PLUGIN_SEO_TAG_PAGE . ']]' . "一覧\n\n" . '#related';
+		page_write(PLUGIN_SEO_TAG_PAGE, $postdata);
 	}
 										// タグページ名セット
 	$pages = explode(",", $tags);
@@ -41,7 +42,7 @@ function plugin_seo_create_tag_page($tags) {
 										// タグページ作成
 	foreach ($pages as $page) {
 		// タグページの階層構造としてその配下にページを作成する
-		$page = PLUGIN_SEO_TAG_PAGE . '/' . $page;
+		$page = PLUGIN_SEO_TAG_PAGE . '/' . trim($page);
 		if (! is_page($page) ) {
 			// ページが存在しない場合はページを作成する
 			page_write($page, $postdata);
