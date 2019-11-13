@@ -20,7 +20,6 @@
 
 // Facebook OGPタグ出力設定
 define('PLUGIN_SEO_FACEBOOK_OGP', 1);	// 1:有効 0:無効
-
 // Twitter OGPタグ出力設定
 define('PLUGIN_SEO_TWITTER_OGP', 1);	// 1:有効 0:無効
 
