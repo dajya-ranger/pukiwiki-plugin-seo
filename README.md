@@ -1,5 +1,7 @@
 # pukiwiki-plugin-seo
+
 PukiWiki用SEO対応プラグイン
+
 - 暫定公開版です（[PukiWiki1.5.2](https://pukiwiki.osdn.jp/?PukiWiki/Download/1.5.2)で動作確認済）
 - 本プラグインを利用することで、[PukiWiki](https://ja.wikipedia.org/wiki/PukiWiki)サイトのページ単位で次のメタタグを設定することが可能です
 	- description
