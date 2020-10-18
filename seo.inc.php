@@ -73,6 +73,9 @@ function plugin_seo_inline() {
 	switch( $name ) {
 	case 'description':					// ページ概要
 		if ( isset($content) && ($content != '') ) {
+										// ページヘッダに概要タグ出力
+			$head_tags[] = '<meta name="' . $name . '" content="'
+				. $content . '" />';
 										// Facebook OGPタグ出力
 			if (PLUGIN_SEO_FACEBOOK_OGP != 0) {
 				// Facebook OGPタグ出力設定でページ概要の場合はタグを出力
