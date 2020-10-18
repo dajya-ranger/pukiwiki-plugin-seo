@@ -85,7 +85,7 @@ function plugin_seo_inline() {
 										// Twitter OGPタグ出力
 			if (PLUGIN_SEO_TWITTER_OGP != 0) {
 				// Twitter OGPタグ出力設定でページ概要の場合はタグを出力
-				$head_tags[] = '<meta property="twitter:' . $name
+				$head_tags[] = '<meta name="twitter:' . $name
 					. '" content="' . $content . '" />';
 			}
 		} else {
